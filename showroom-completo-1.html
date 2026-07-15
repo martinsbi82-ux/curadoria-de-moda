@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabiana Martins — Moda &amp; Negócios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   CAMPO — Sistema editorial
+   Tokens: cores, tipografia, espaçamento
+   ============================================ */
+
+:root{
+  --off-white: #F7F3EC;
+  --areia: #E9DFC9;
+  --caramelo: #C1873F;
+  --terracota: #B85C3E;
+  --azul-jeans: #435C74;
+  --verde-oliva: #6B7048;
+  --grafite: #2B2724;
+  --grafite-suave: #4A4540;
+  --linha: rgba(43,39,36,0.14);
+
+  --serif: 'Fraunces', 'Georgia', serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --max: 1180px;
+  --gutter: clamp(20px, 5vw, 64px);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--off-white);
+  color:var(--grafite);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+img,svg{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:var(--max); margin:0 auto; padding:0 var(--gutter);}
+
+/* ---------- Utility type ---------- */
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--grafite-suave);
+  font-weight:600;
+}
+.numeral{
+  font-family:var(--serif);
+  font-variant-numeric: oldstyle-nums;
+  color:var(--terracota);
+}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(247,243,236,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid var(--linha);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px var(--gutter);
+  max-width:var(--max); margin:0 auto;
+}
+.logo{
+  font-family:var(--serif);
+  font-size:22px;
+  letter-spacing:.04em;
+  font-weight:600;
+}
+.logo span{color:var(--terracota);}
+.main-nav{display:flex; gap:36px;}
+.main-nav a{
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--grafite-suave);
+  position:relative;
+  padding-bottom:4px;
+}
+.main-nav a:hover{color:var(--grafite);}
+.main-nav a.active{color:var(--grafite);}
+.main-nav a.active::after{
+  content:'';
+  position:absolute; left:0; right:0; bottom:0;
+  height:1px; background:var(--terracota);
+}
+.header-actions{display:flex; gap:22px; align-items:center;}
+.header-actions a{font-size:13px; letter-spacing:.06em; text-transform:uppercase;}
+.nav-toggle{display:none; background:none; border:0; font-size:22px; cursor:pointer; color:var(--grafite);}
+
+@media (max-width: 860px){
+  .main-nav{display:none;}
+  .nav-toggle{display:block;}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  min-height:86vh;
+  display:flex; align-items:flex-end;
+  background:
+    linear-gradient(180deg, rgba(43,39,36,0) 40%, rgba(43,39,36,0.55) 100%),
+    linear-gradient(120deg, #DCCBAE 0%, #C9A46F 45%, #A9784A 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0 2px, transparent 2px 60px);
+  mix-blend-mode:overlay;
+}
+.hero-content{
+  position:relative;
+  padding:56px var(--gutter) 64px;
+  max-width:var(--max); margin:0 auto; width:100%;
+  color:var(--off-white);
+}
+.hero-eyebrow{
+  font-size:12px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--areia); margin-bottom:18px; font-weight:600;
+}
+.hero-title{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(40px, 7vw, 88px);
+  line-height:1.02;
+  max-width:900px;
+  margin:0 0 22px;
+}
+.hero-title em{font-style:italic; font-weight:400; color:var(--areia);}
+.hero-sub{
+  max-width:480px;
+  font-size:16px;
+  color:rgba(247,243,236,0.85);
+  margin-bottom:28px;
+}
+.hero-caption{
+  font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  color:rgba(247,243,236,0.6);
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:13px; letter-spacing:.08em; text-transform:uppercase; font-weight:600;
+  padding:14px 26px;
+  border:1px solid currentColor;
+  transition: background .2s ease, color .2s ease;
+}
+.btn-light{color:var(--off-white);}
+.btn-light:hover{background:var(--off-white); color:var(--grafite);}
+.btn-dark{color:var(--grafite); border-color:var(--grafite);}
+.btn-dark:hover{background:var(--grafite); color:var(--off-white);}
+
+/* ---------- Editorial intro ---------- */
+.intro{
+  padding:120px var(--gutter) 90px;
+  max-width:760px; margin:0 auto;
+  text-align:center;
+}
+.intro .eyebrow{display:block; margin-bottom:22px;}
+.intro p{
+  font-family:var(--serif);
+  font-size:clamp(24px, 3.2vw, 34px);
+  line-height:1.42;
+  font-weight:400;
+  color:var(--grafite);
+}
+.intro p strong{font-weight:600; color:var(--terracota);}
+
+/* ---------- Sumário (índice / signature nav) ---------- */
+.sumario{
+  border-top:1px solid var(--linha);
+  border-bottom:1px solid var(--linha);
+  margin:0 var(--gutter);
+}
+.sumario-inner{max-width:var(--max); margin:0 auto;}
+.sumario-item{
+  display:flex; align-items:baseline; gap:28px;
+  padding:30px 0;
+  border-bottom:1px solid var(--linha);
+  transition: padding-left .25s ease;
+}
+.sumario-item:last-child{border-bottom:none;}
+.sumario-item .numeral{font-size:20px; min-width:34px;}
+.sumario-item .sumario-title{
+  font-family:var(--serif);
+  font-size:clamp(22px, 3vw, 32px);
+  font-weight:500;
+  flex:1;
+}
+.sumario-item .sumario-desc{
+  font-size:13px; color:var(--grafite-suave);
+  max-width:260px; text-align:right;
+  display:none;
+}
+.sumario-item .arrow{font-size:20px; color:var(--terracota);}
+.sumario-item:hover{padding-left:14px; background:rgba(193,135,63,0.06);}
+@media (min-width: 760px){
+  .sumario-item .sumario-desc{display:block;}
+}
+
+/* ---------- Section heading ---------- */
+.section-head{
+  display:flex; justify-content:space-between; align-items:flex-end;
+  padding:90px var(--gutter) 40px;
+  max-width:var(--max); margin:0 auto;
+  gap:24px; flex-wrap:wrap;
+}
+.section-head h2{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(30px, 4vw, 46px);
+  margin:10px 0 0;
+}
+.section-head .link-more{
+  font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+  border-bottom:1px solid var(--grafite);
+  padding-bottom:2px;
+  white-space:nowrap;
+}
+
+/* ---------- Curated grid ---------- */
+.curated{
+  padding:0 var(--gutter) 100px;
+  max-width:var(--max); margin:0 auto;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:var(--gutter);
+}
+.piece{display:flex; flex-direction:column; gap:16px;}
+.piece-frame{
+  aspect-ratio: 3/4;
+  background:linear-gradient(155deg, var(--areia), #D9C6A2);
+  position:relative;
+  overflow:hidden;
+}
+.piece-frame::after{
+  content: attr(data-label);
+  position:absolute; left:16px; bottom:16px;
+  font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+  color:rgba(43,39,36,0.55);
+}
+.piece:nth-child(2) .piece-frame{background:linear-gradient(155deg, #CFDAE0, var(--azul-jeans));}
+.piece:nth-child(3) .piece-frame{background:linear-gradient(155deg, #E3DCC4, var(--verde-oliva));}
+.piece-info{display:flex; justify-content:space-between; align-items:baseline;}
+.piece-name{font-family:var(--serif); font-size:19px;}
+.piece-price{font-size:14px; color:var(--grafite-suave);}
+@media (max-width: 860px){
+  .curated{grid-template-columns:1fr; gap:48px;}
+}
+
+/* ---------- Pull quote ---------- */
+.quote{
+  background:var(--grafite);
+  color:var(--off-white);
+  padding:120px var(--gutter);
+}
+.quote-inner{max-width:820px; margin:0 auto; text-align:center;}
+.quote-inner p{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(26px, 4vw, 42px);
+  line-height:1.4;
+}
+.quote-attr{margin-top:28px; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:rgba(247,243,236,0.6);}
+
+/* ---------- Teaser tiles (Método / Caderno) ---------- */
+.teasers{
+  padding:100px var(--gutter);
+  max-width:var(--max); margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--gutter);
+}
+.teaser{
+  display:block;
+  border:1px solid var(--linha);
+  padding:40px;
+  min-height:340px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  transition: background .2s ease;
+}
+.teaser:hover{background:rgba(193,135,63,0.06);}
+.teaser .numeral{font-size:15px;}
+.teaser h3{
+  font-family:var(--serif); font-weight:500;
+  font-size:clamp(26px, 3vw, 34px);
+  margin:18px 0 14px;
+}
+.teaser p{font-size:14px; color:var(--grafite-suave); max-width:38ch;}
+.teaser .arrow{align-self:flex-start; margin-top:24px; font-size:14px; letter-spacing:.06em; text-transform:uppercase; border-bottom:1px solid var(--grafite);}
+@media (max-width: 760px){
+  .teasers{grid-template-columns:1fr;}
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter{
+  padding:90px var(--gutter);
+  border-top:1px solid var(--linha);
+  text-align:center;
+}
+.newsletter h3{font-family:var(--serif); font-weight:500; font-size:clamp(24px,3vw,32px); margin-bottom:14px;}
+.newsletter p{color:var(--grafite-suave); font-size:14px; margin-bottom:30px;}
+.newsletter form{display:flex; justify-content:center; gap:0; max-width:420px; margin:0 auto;}
+.newsletter input{
+  flex:1; padding:14px 16px; border:1px solid var(--grafite); border-right:none;
+  font-family:var(--sans); font-size:14px; background:transparent; color:var(--grafite);
+}
+.newsletter input::placeholder{color:var(--grafite-suave);}
+.newsletter button{
+  padding:14px 22px; background:var(--grafite); color:var(--off-white);
+  border:1px solid var(--grafite); font-size:12px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;
+}
+
+/* ---------- Footer ---------- */
+footer{
+  background:var(--areia);
+  padding:70px var(--gutter) 30px;
+}
+.footer-grid{
+  max-width:var(--max); margin:0 auto;
+  display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap:40px;
+  padding-bottom:50px;
+}
+.footer-grid .logo{margin-bottom:14px;}
+.footer-grid p{font-size:13px; color:var(--grafite-suave); max-width:32ch;}
+.footer-col h4{font-size:12px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:16px; color:var(--grafite-suave);}
+.footer-col a{display:block; font-size:14px; margin-bottom:10px;}
+.footer-bottom{
+  max-width:var(--max); margin:0 auto;
+  border-top:1px solid var(--linha);
+  padding-top:24px;
+  display:flex; justify-content:space-between; font-size:12px; color:var(--grafite-suave);
+  flex-wrap:wrap; gap:10px;
+}
+@media (max-width:760px){
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+
+/* ---------- Institutional pages ---------- */
+.page-hero{
+  padding:170px var(--gutter) 70px;
+  max-width:var(--max); margin:0 auto;
+  border-bottom:1px solid var(--linha);
+}
+.page-hero .eyebrow{margin-bottom:20px; display:block;}
+.page-hero h1{
+  font-family:var(--serif); font-weight:500;
+  font-size:clamp(38px, 6vw, 70px);
+  max-width:800px; line-height:1.06;
+}
+.page-hero .lede{
+  font-size:18px; color:var(--grafite-suave); max-width:560px; margin-top:24px;
+}
+
+.content-block{
+  max-width:720px; margin:0 auto;
+  padding:80px var(--gutter);
+}
+.content-block h2{
+  font-family:var(--serif); font-weight:500; font-size:clamp(26px,3vw,34px);
+  margin-bottom:20px;
+}
+.content-block p{font-size:16px; color:var(--grafite-suave); margin-bottom:20px;}
+
+.method-steps{
+  max-width:var(--max); margin:0 auto;
+  padding:0 var(--gutter) 100px;
+  display:grid; grid-template-columns: repeat(4, 1fr); gap:var(--gutter);
+}
+.method-step .numeral{font-size:34px; display:block; margin-bottom:18px;}
+.method-step h3{font-family:var(--serif); font-weight:500; font-size:21px; margin-bottom:10px;}
+.method-step p{font-size:13.5px; color:var(--grafite-suave);}
+@media (max-width:900px){
+  .method-steps{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:560px){
+  .method-steps{grid-template-columns:1fr;}
+}
+
+.journal-list{
+  max-width:var(--max); margin:0 auto;
+  padding:0 var(--gutter) 100px;
+  display:grid; grid-template-columns:1fr 1fr; gap:56px var(--gutter);
+}
+.journal-entry .piece-frame{margin-bottom:18px;}
+.journal-entry .eyebrow{margin-bottom:10px; display:block;}
+.journal-entry h3{font-family:var(--serif); font-weight:500; font-size:24px; margin-bottom:10px;}
+.journal-entry p{font-size:14px; color:var(--grafite-suave);}
+@media (max-width:760px){
+  .journal-list{grid-template-columns:1fr;}
+}
+
+.about-grid{
+  max-width:var(--max); margin:0 auto;
+  padding:0 var(--gutter) 100px;
+  display:grid; grid-template-columns: 1fr 1fr; gap:var(--gutter);
+  align-items:center;
+}
+.about-portrait{aspect-ratio:4/5; background:linear-gradient(160deg, var(--areia), var(--caramelo));}
+@media (max-width:800px){
+  .about-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================
+   SHOWROOM — Componentes adicionais
+   ============================================ */
+
+/* ---------- Logo lockup (duas linhas) ---------- */
+.logo-lockup{display:flex; flex-direction:column; line-height:1.05;}
+.logo-lockup .nome{
+  font-family:var(--serif); font-weight:500; font-size:19px; letter-spacing:.01em;
+}
+.logo-lockup .sub{
+  font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--grafite-suave);
+  margin-top:3px;
+}
+.main-nav a{font-size:12px;}
+@media (max-width:1080px){ .main-nav{gap:22px;} }
+
+/* ---------- Manifesto ---------- */
+.manifesto{
+  padding:130px var(--gutter) 100px;
+  max-width:720px; margin:0 auto; text-align:center;
+}
+.manifesto .eyebrow{display:block; margin-bottom:22px;}
+.manifesto h2{
+  font-family:var(--serif); font-weight:500;
+  font-size:clamp(32px,5vw,52px); line-height:1.08; margin-bottom:28px;
+}
+.manifesto p{
+  font-size:17px; color:var(--grafite-suave); line-height:1.65; margin-bottom:36px;
+}
+
+/* ---------- Coleções — grid editorial assimétrico ---------- */
+.collections-grid{
+  max-width:var(--max); margin:0 auto;
+  padding:0 var(--gutter) 110px;
+  display:grid; grid-template-columns:repeat(6,1fr); gap:var(--gutter);
+}
+.collection-card{grid-column:span 3; display:block;}
+.collection-card.wide{grid-column:span 4;}
+.collection-card.narrow{grid-column:span 2;}
+.collection-frame{
+  aspect-ratio:4/5;
+  background:linear-gradient(155deg, var(--areia), var(--caramelo));
+  margin-bottom:20px; position:relative; overflow:hidden;
+}
+.collection-frame::after{
+  content:attr(data-label);
+  position:absolute; left:16px; bottom:16px;
+  font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:rgba(43,39,36,0.55);
+}
+.collection-card:nth-child(2) .collection-frame{background:linear-gradient(155deg,#CFDAE0,var(--azul-jeans));}
+.collection-card:nth-child(3) .collection-frame{background:linear-gradient(155deg,#E3DCC4,var(--verde-oliva));}
+.collection-card:nth-child(4) .collection-frame{background:linear-gradient(155deg,#E9D9C9,var(--terracota));}
+.collection-card:nth-child(5) .collection-frame{background:linear-gradient(155deg,#DCE3D6,#8C9A78);}
+.collection-card .eyebrow{margin-bottom:8px; display:block;}
+.collection-card h3{font-family:var(--serif); font-weight:500; font-size:24px; margin-bottom:8px;}
+.collection-card p{font-size:13.5px; color:var(--grafite-suave);}
+@media (max-width:900px){
+  .collections-grid{grid-template-columns:1fr 1fr;}
+  .collection-card, .collection-card.wide, .collection-card.narrow{grid-column:span 1;}
+}
+@media (max-width:560px){
+  .collections-grid{grid-template-columns:1fr;}
+}
+
+/* ---------- Marcas strip ---------- */
+.brands-strip{
+  max-width:var(--max); margin:0 auto;
+  padding:0 var(--gutter) 110px;
+  display:grid; grid-template-columns:repeat(5,1fr); gap:var(--gutter);
+  align-items:center;
+}
+.brand-mark{
+  aspect-ratio:3/2;
+  border:1px solid var(--linha);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-size:14px; color:var(--grafite-suave); text-align:center; padding:10px;
+}
+@media (max-width:800px){ .brands-strip{grid-template-columns:repeat(2,1fr);} }
+
+/* ---------- Ficha do produto ---------- */
+.produto{
+  max-width:var(--max); margin:0 auto;
+  padding:150px var(--gutter) 100px;
+  display:grid; grid-template-columns: 1.1fr 1fr; gap:72px;
+}
+.produto-galeria{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.produto-galeria .foto{aspect-ratio:3/4; background:linear-gradient(155deg,var(--areia),#D9C6A2);}
+.produto-galeria .foto:first-child{grid-column:1/3; aspect-ratio:4/3;}
+.produto-info .eyebrow{display:block; margin-bottom:14px;}
+.produto-info h1{font-family:var(--serif); font-weight:500; font-size:clamp(28px,3.4vw,40px); margin-bottom:10px;}
+.produto-preco{font-size:18px; color:var(--terracota); margin-bottom:28px;}
+.produto-ficha-tecnica{
+  border-top:1px solid var(--linha); border-bottom:1px solid var(--linha);
+  padding:20px 0; margin-bottom:32px; font-size:13.5px; color:var(--grafite-suave);
+}
+.produto-ficha-tecnica div{display:flex; justify-content:space-between; padding:6px 0;}
+.curadoria-box{
+  background:var(--off-white); border:1px solid var(--linha); padding:28px; margin-bottom:32px;
+}
+.curadoria-box h4{font-family:var(--serif); font-weight:500; font-size:17px; margin-bottom:14px;}
+.curadoria-box p{font-size:14.5px; color:var(--grafite-suave); margin-bottom:14px;}
+.curadoria-box p:last-child{margin-bottom:0;}
+.ratings{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:32px;}
+.rating-item .label{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--grafite-suave); margin-bottom:6px;}
+.stars{color:var(--caramelo); font-size:16px; letter-spacing:2px;}
+.stars .off{color:var(--linha);}
+.tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px;}
+.tag-pill{
+  font-size:11.5px; letter-spacing:.04em; text-transform:uppercase;
+  border:1px solid var(--linha); padding:7px 14px; color:var(--grafite-suave);
+}
+.combina-com{display:flex; gap:16px;}
+.combina-com a{flex:1; text-align:center;}
+.combina-com .mini-frame{aspect-ratio:3/4; background:linear-gradient(155deg,var(--areia),#D9C6A2); margin-bottom:8px;}
+.combina-com span{font-size:12px;}
+.pergunta-final{
+  margin-top:36px; padding-top:24px; border-top:1px solid var(--linha);
+  font-family:var(--serif); font-style:italic; font-size:18px; color:var(--grafite);
+}
+
+/* ---------- Página da marca ---------- */
+.marca-hero{
+  max-width:var(--max); margin:0 auto;
+  padding:150px var(--gutter) 70px;
+  display:grid; grid-template-columns:220px 1fr; gap:48px; align-items:center;
+  border-bottom:1px solid var(--linha);
+}
+.marca-logo-box{aspect-ratio:1; border:1px solid var(--linha); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:15px; text-align:center; padding:12px;}
+.marca-hero h1{font-family:var(--serif); font-weight:500; font-size:clamp(30px,4vw,46px); margin-bottom:12px;}
+.marca-hero .especialidade{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--terracota);}
+.marca-detalhe{
+  max-width:var(--max); margin:0 auto; padding:80px var(--gutter);
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--gutter);
+}
+.marca-detalhe h2{font-family:var(--serif); font-weight:500; font-size:24px; margin-bottom:16px;}
+.marca-detalhe p{font-size:15px; color:var(--grafite-suave); margin-bottom:16px;}
+.marca-analise{
+  background:var(--grafite); color:var(--off-white);
+  padding:70px var(--gutter); margin-top:0;
+}
+.marca-analise-inner{max-width:720px; margin:0 auto;}
+.marca-analise .eyebrow{color:rgba(247,243,236,0.6); display:block; margin-bottom:18px;}
+.marca-analise p{font-family:var(--serif); font-size:clamp(20px,2.6vw,26px); line-height:1.5;}
+
+/* ---------- Caderno categorias ---------- */
+.caderno-categorias{
+  max-width:var(--max); margin:0 auto; padding:0 var(--gutter) 40px;
+  display:flex; flex-wrap:wrap; gap:12px;
+}
+.cat-pill{
+  font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+  padding:10px 18px; border:1px solid var(--linha); color:var(--grafite-suave);
+}
+.cat-pill.active{background:var(--grafite); color:var(--off-white); border-color:var(--grafite);}
+
+/* ---------- Fluxo (about diagram) ---------- */
+.fluxo{
+  max-width:640px; margin:0 auto; padding:0 var(--gutter) 100px;
+  display:flex; flex-direction:column; align-items:center; gap:0;
+}
+.fluxo-step{
+  padding:16px 28px; border:1px solid var(--linha);
+  font-family:var(--serif); font-size:16px; text-align:center; width:100%; max-width:320px;
+}
+.fluxo-arrow{padding:10px 0; color:var(--terracota); font-size:16px;}
+
+/* ---------- Contato ---------- */
+.contato-grid{
+  max-width:var(--max); margin:0 auto; padding:150px var(--gutter) 110px;
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--gutter);
+}
+.contato-form label{font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--grafite-suave); display:block; margin-bottom:8px;}
+.contato-form input, .contato-form select, .contato-form textarea{
+  width:100%; padding:13px 14px; margin-bottom:22px; border:1px solid var(--linha);
+  background:transparent; font-family:var(--sans); font-size:14px; color:var(--grafite);
+}
+.contato-form textarea{min-height:120px; resize:vertical;}
+.contato-form button{
+  padding:14px 30px; background:var(--grafite); color:var(--off-white); border:none;
+  font-size:12px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer;
+}
+.contato-info h2{font-family:var(--serif); font-weight:500; font-size:clamp(26px,3vw,34px); margin-bottom:20px;}
+.contato-info p{font-size:15px; color:var(--grafite-suave); margin-bottom:14px;}
+.contato-motivos{list-style:none; padding:0; margin-top:28px;}
+.contato-motivos li{padding:14px 0; border-top:1px solid var(--linha); font-size:14px; color:var(--grafite-suave);}
+@media (max-width:800px){ .contato-grid, .marca-detalhe, .produto{grid-template-columns:1fr;} .marca-hero{grid-template-columns:1fr; text-align:center;} .marca-logo-box{margin:0 auto;} }
+
+/* ---------- Menu mobile (toggle) ---------- */
+@media (max-width: 860px){
+  .main-nav{
+    display:none;
+    position:absolute; top:100%; left:0; right:0;
+    background:var(--off-white);
+    border-bottom:1px solid var(--linha);
+    flex-direction:column; gap:0;
+    padding:8px var(--gutter) 20px;
+  }
+  .main-nav.open{display:flex;}
+  .main-nav a{padding:14px 0; border-bottom:1px solid var(--linha); width:100%;}
+  .main-nav a:last-child{border-bottom:none;}
+  .header-actions{display:none;}
+  .site-header{position:sticky;}
+}
+.nav-toggle{position:relative; z-index:60;}
+
+/* ---------- Assinatura no rodapé (texto simples, sem repetir o logotipo) ---------- */
+.footer-signature{
+  font-family:var(--sans);
+  font-size:12px;
+  letter-spacing:.04em;
+  color:var(--grafite-suave);
+  margin-bottom:14px;
+  line-height:1.6;
+}
+
+/* ---------- Hero simplificado ---------- */
+.hero-tagline{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(247,243,236,0.75);
+  margin:0 0 30px;
+  font-weight:600;
+}
+
+.page-panel { display:none; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#inicio" data-nav="inicio" class="logo-lockup">
+      <span class="nome">Fabiana Martins</span>
+      <span class="sub">Moda &amp; Negócios</span>
+    </a>
+    <nav class="main-nav">
+      <a href="#inicio" data-nav="inicio">Início</a>
+      <a href="#colecoes" data-nav="colecoes">Coleções</a>
+      <a href="#metodo" data-nav="metodo">Método</a>
+      <a href="#caderno" data-nav="caderno">Caderno</a>
+      <a href="#marca" data-nav="marca">Marcas</a>
+      <a href="#sobre" data-nav="sobre">Sobre</a>
+      <a href="#contato" data-nav="contato">Contato</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<section class="page-panel" id="panel-inicio" data-page="inicio">
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Moda para ser vivida.</h1>
+    <p class="hero-tagline">Curadoria de Moda Brasileira</p>
+    <a href="#colecoes" class="btn btn-light">Conheça a Curadoria</a>
+    <div style="margin-top:18px" class="hero-caption">Imagem editorial — varanda, café, jeans, linho, luz da manhã, plantas</div>
+  </div>
+</section>
+
+<section class="manifesto">
+  <span class="eyebrow">Manifesto</span>
+  <h2>Moda para ser vivida.</h2>
+  <p>Curadoria de moda brasileira para quem acredita que conforto, qualidade e autenticidade caminham juntos.</p>
+  <a href="#colecoes" class="btn btn-dark">Conheça a Curadoria</a>
+</section>
+
+<div class="section-head">
+  <div>
+    <span class="eyebrow">Coleções</span>
+    <h2>Cinco narrativas, uma vida</h2>
+  </div>
+  <a href="#colecoes" class="link-more">Ver todas →</a>
+</div>
+
+<div class="collections-grid">
+  <a class="collection-card wide" href="#colecoes">
+    <div class="collection-frame" data-label="Jeans Essenciais"></div>
+    <span class="eyebrow">01</span>
+    <h3>Jeans Essenciais</h3>
+    <p>Modelagens atemporais para acompanhar a rotina brasileira.</p>
+  </a>
+  <a class="collection-card narrow" href="#colecoes">
+    <div class="collection-frame" data-label="Casual Contemporâneo"></div>
+    <span class="eyebrow">02</span>
+    <h3>Casual Contemporâneo</h3>
+    <p>Peças versáteis que atravessam estações sem perder atualidade.</p>
+  </a>
+  <a class="collection-card narrow" href="#colecoes">
+    <div class="collection-frame" data-label="Linhos Brasileiros"></div>
+    <span class="eyebrow">03</span>
+    <h3>Linhos Brasileiros</h3>
+    <p>Leveza e respirabilidade pensadas para o nosso clima.</p>
+  </a>
+  <a class="collection-card narrow" href="#colecoes">
+    <div class="collection-frame" data-label="Camadas"></div>
+    <span class="eyebrow">04</span>
+    <h3>Camadas</h3>
+    <p>Jaquetas e tricôs para os dias de transição.</p>
+  </a>
+  <a class="collection-card wide" href="#colecoes">
+    <div class="collection-frame" data-label="Vida ao Ar Livre"></div>
+    <span class="eyebrow">05</span>
+    <h3>Vida ao Ar Livre</h3>
+    <p>Da cidade à serra, roupa que acompanha o movimento real do dia.</p>
+  </a>
+</div>
+
+<div class="teasers">
+  <a class="teaser" href="#metodo">
+    <span class="numeral eyebrow">Método</span>
+    <div>
+      <h3>Como escolhemos cada peça</h3>
+      <p>Conheça os critérios por trás de cada peça que entra no showroom.</p>
+    </div>
+    <span class="arrow">Conhecer o Método Cotidiano</span>
+  </a>
+  <a class="teaser" href="#caderno">
+    <span class="numeral eyebrow">Caderno</span>
+    <div>
+      <h3>O jeans que atravessa gerações</h3>
+      <p>Editorial em destaque — observações, tecidos, modelagens e o guarda-roupa brasileiro.</p>
+    </div>
+    <span class="arrow">Ler o Caderno</span>
+  </a>
+</div>
+
+<div class="section-head">
+  <div>
+    <span class="eyebrow">Marcas</span>
+    <h2>Poucas, bem selecionadas</h2>
+  </div>
+  <a href="#marca" class="link-more">Conhecer as marcas →</a>
+</div>
+
+<div class="brands-strip">
+  <a class="brand-mark" href="#marca">Marca Um</a>
+  <a class="brand-mark" href="#marca">Marca Dois</a>
+  <a class="brand-mark" href="#marca">Marca Três</a>
+  <a class="brand-mark" href="#marca">Marca Quatro</a>
+  <a class="brand-mark" href="#marca">Marca Cinco</a>
+</div>
+</section>
+<section class="page-panel" id="panel-colecoes" data-page="colecoes">
+<section class="page-hero">
+  <span class="eyebrow">Coleções</span>
+  <h1>Cinco narrativas, não cinco categorias</h1>
+  <p class="lede">Cada coleção funciona como um editorial — não como um catálogo. As peças se conectam entre si: uma camisa branca pode pertencer a mais de uma narrativa ao mesmo tempo.</p>
+</section>
+
+<div class="collections-grid" style="padding-top:80px;" id="jeans-essenciais">
+  <a class="collection-card wide" href="#produto">
+    <div class="collection-frame" data-label="Jeans Essenciais"></div>
+    <span class="eyebrow">01</span>
+    <h3>Jeans Essenciais</h3>
+    <p>Modelagens atemporais para acompanhar a rotina brasileira.</p>
+  </a>
+  <a class="collection-card narrow" href="#produto" id="casual-contemporaneo">
+    <div class="collection-frame" data-label="Casual Contemporâneo"></div>
+    <span class="eyebrow">02</span>
+    <h3>Casual Contemporâneo</h3>
+    <p>Peças versáteis que atravessam estações sem perder atualidade.</p>
+  </a>
+  <a class="collection-card narrow" href="#produto" id="linhos-brasileiros">
+    <div class="collection-frame" data-label="Linhos Brasileiros"></div>
+    <span class="eyebrow">03</span>
+    <h3>Linhos Brasileiros</h3>
+    <p>Leveza e respirabilidade pensadas para o nosso clima.</p>
+  </a>
+  <a class="collection-card narrow" href="#produto" id="camadas">
+    <div class="collection-frame" data-label="Camadas"></div>
+    <span class="eyebrow">04</span>
+    <h3>Camadas</h3>
+    <p>Jaquetas e tricôs para os dias de transição.</p>
+  </a>
+  <a class="collection-card wide" href="#produto" id="vida-ao-ar-livre">
+    <div class="collection-frame" data-label="Vida ao Ar Livre"></div>
+    <span class="eyebrow">05</span>
+    <h3>Vida ao Ar Livre</h3>
+    <p>Da cidade à serra, roupa que acompanha o movimento real do dia.</p>
+  </a>
+</div>
+
+<section class="quote">
+  <div class="quote-inner">
+    <p>"Nenhuma coleção é isolada. A mesma camisa branca atravessa o Jeans Essenciais, o Casual Contemporâneo e os Linhos Brasileiros — porque a vida real também não separa as coisas em categorias fechadas."</p>
+    <div class="quote-attr">Sobre a curadoria</div>
+  </div>
+</section>
+</section>
+<section class="page-panel" id="panel-produto" data-page="produto">
+<div class="produto">
+  <div class="produto-galeria">
+    <div class="foto" data-label="Foto principal"></div>
+    <div class="foto"></div>
+    <div class="foto"></div>
+  </div>
+
+  <div class="produto-info">
+    <span class="eyebrow">Linhos Brasileiros</span>
+    <h1>Camisa de Linho Natural</h1>
+    <div class="produto-preco">R$ 349</div>
+
+    <div class="produto-ficha-tecnica">
+      <div><span>Material</span><span>100% linho</span></div>
+      <div><span>Cor</span><span>Areia</span></div>
+      <div><span>Tamanhos</span><span>P · M · G · GG</span></div>
+      <div><span>Lavagem</span><span>À mão, água fria</span></div>
+    </div>
+
+    <div class="curadoria-box">
+      <h4>Curadoria Fabiana Martins</h4>
+      <p><strong>Por que esta peça entrou no showroom?</strong> Porque atravessa o guarda-roupa inteiro — do escritório ao fim de semana — sem perder a leveza que o clima brasileiro pede.</p>
+      <p><strong>O que mais gosto nela?</strong> O caimento solto, que não marca o corpo e ainda assim parece proposital.</p>
+      <p><strong>Para quem faz sentido?</strong> Para quem quer uma peça coringa: veste em reunião, veste na praia à noite, veste em viagem.</p>
+      <p><strong>Como usar?</strong> Aberta sobre uma regata, com jeans reto, ou fechada com a manga dobrada, em um look mais formal.</p>
+    </div>
+
+    <div class="tag-row">
+      <span class="tag-pill">Verão</span>
+      <span class="tag-pill">Primavera</span>
+      <span class="tag-pill">Inverno leve</span>
+    </div>
+
+    <div class="ratings">
+      <div class="rating-item">
+        <div class="label">Versatilidade</div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="rating-item">
+        <div class="label">Conforto</div>
+        <div class="stars">★★★★★</div>
+      </div>
+      <div class="rating-item">
+        <div class="label">Atemporalidade</div>
+        <div class="stars">★★★★<span class="off">★</span></div>
+      </div>
+      <div class="rating-item">
+        <div class="label">Durabilidade</div>
+        <div class="stars">★★★★<span class="off">★</span></div>
+      </div>
+    </div>
+
+    <div class="section-head" style="padding:0 0 20px; max-width:none;">
+      <h2 style="font-size:18px;">Combina com</h2>
+    </div>
+    <div class="combina-com">
+      <a href="#produto">
+        <div class="mini-frame"></div>
+        <span>Calça Reta Azul Profundo</span>
+      </a>
+      <a href="#produto">
+        <div class="mini-frame"></div>
+        <span>Jaqueta Trucker Bruta</span>
+      </a>
+    </div>
+
+    <p class="pergunta-final">Faz sentido para a vida real? Sim.</p>
+
+    <a href="#" class="btn btn-dark" style="margin-top:32px;">Adicionar à sacola</a>
+  </div>
+</div>
+</section>
+<section class="page-panel" id="panel-marca" data-page="marca">
+<div class="marca-hero">
+  <div class="marca-logo-box">Logo da Marca</div>
+  <div>
+    <span class="especialidade">Especialidade — Linho</span>
+    <h1>Marca Exemplo</h1>
+    <p style="color:var(--grafite-suave); max-width:520px; margin-top:12px;">Produção nacional, tecidos naturais e uma modelagem que respeita o corpo brasileiro.</p>
+  </div>
+</div>
+
+<div class="marca-detalhe">
+  <div>
+    <h2>História</h2>
+    <p>Quem é essa marca? Nascida em ateliê pequeno, a marca cresceu apostando em produção nacional e tecidos que envelhecem bem — sem seguir o ritmo do fast fashion.</p>
+    <p>O que valorizamos nela? Qualidade de tecido, modelagem revisada a cada estação e transparência sobre a origem de cada peça.</p>
+  </div>
+  <div>
+    <h2>Especialidade</h2>
+    <p>Linho e algodão orgânico, com foco em peças de base — camisas, calças e vestidos que atravessam mais de uma estação sem perder relevância.</p>
+    <h2 style="margin-top:32px;">Coleções disponíveis</h2>
+    <p>Linhos Brasileiros · Casual Contemporâneo</p>
+  </div>
+</div>
+
+<div class="section-head">
+  <div>
+    <span class="eyebrow">Peças em destaque</span>
+    <h2>Desta marca, no showroom</h2>
+  </div>
+</div>
+<div class="curated" style="padding-bottom:0;">
+  <a class="piece" href="#produto">
+    <div class="piece-frame" data-label="Foto 01"></div>
+    <div class="piece-info">
+      <span class="piece-name">Camisa de Linho Natural</span>
+      <span class="piece-price">R$ 349</span>
+    </div>
+  </a>
+  <a class="piece" href="#produto">
+    <div class="piece-frame" data-label="Foto 02"></div>
+    <div class="piece-info">
+      <span class="piece-name">Vestido Solto Areia</span>
+      <span class="piece-price">R$ 419</span>
+    </div>
+  </a>
+  <a class="piece" href="#produto">
+    <div class="piece-frame" data-label="Foto 03"></div>
+    <div class="piece-info">
+      <span class="piece-name">Calça Wide Leg Linho</span>
+      <span class="piece-price">R$ 389</span>
+    </div>
+  </a>
+</div>
+
+<section class="marca-analise">
+  <div class="marca-analise-inner">
+    <span class="eyebrow">Minha análise</span>
+    <p>Esta marca entrou na curadoria porque cumpre o que promete: tecido de verdade, corte que dura e produção que a gente consegue rastrear até a origem.</p>
+  </div>
+</section>
+</section>
+<section class="page-panel" id="panel-metodo" data-page="metodo">
+<section class="page-hero">
+  <span class="eyebrow">Método Cotidiano</span>
+  <h1>Como escolhemos cada peça</h1>
+  <p class="lede">Nenhuma peça entra no showroom por moda passageira. Ela precisa responder a uma pergunta simples: faz sentido para a vida real?</p>
+</section>
+
+<div class="method-steps" style="padding-top:80px;">
+  <div class="method-step">
+    <span class="numeral">01</span>
+    <h3>Clima</h3>
+    <p>Cada peça é avaliada para o clima brasileiro — não para vitrines de inverno europeu.</p>
+  </div>
+  <div class="method-step">
+    <span class="numeral">02</span>
+    <h3>Cotidiano</h3>
+    <p>Ela precisa vestir a rotina real: trabalho, deslocamento, encontros, viagens curtas.</p>
+  </div>
+  <div class="method-step">
+    <span class="numeral">03</span>
+    <h3>Identidade</h3>
+    <p>Buscamos produção nacional e um olhar que reconheça o jeito brasileiro de se vestir.</p>
+  </div>
+  <div class="method-step">
+    <span class="numeral">04</span>
+    <h3>Durabilidade</h3>
+    <p>Só entra o que atravessa mais de uma estação — em tecido, em corte e em relevância.</p>
+  </div>
+</div>
+
+<section class="quote">
+  <div class="quote-inner">
+    <p>"Cada peça deste showroom foi escolhida para acompanhar a vida real."</p>
+    <div class="quote-attr">Manifesto</div>
+  </div>
+</section>
+
+<div class="content-block">
+  <h2>Versatilidade, conforto, atemporalidade, durabilidade</h2>
+  <p>Toda ficha de produto no showroom traz essas quatro avaliações. Elas existem para responder, com honestidade, se a peça merece um lugar no seu guarda-roupa — e não apenas no seu carrinho de compras.</p>
+</div>
+</section>
+<section class="page-panel" id="panel-caderno" data-page="caderno">
+<section class="page-hero">
+  <span class="eyebrow">Caderno</span>
+  <h1>Não é um blog. É uma revista.</h1>
+  <p class="lede">Observações, editoriais, tecidos, modelagens e reflexões sobre o guarda-roupa brasileiro.</p>
+</section>
+
+<div class="caderno-categorias" style="padding-top:50px;">
+  <span class="cat-pill active">Todas</span>
+  <span class="cat-pill">Observações</span>
+  <span class="cat-pill">Editorial</span>
+  <span class="cat-pill">Tecidos</span>
+  <span class="cat-pill">Modelagens</span>
+  <span class="cat-pill">Guarda-roupa Brasileiro</span>
+</div>
+
+<div class="journal-list" style="padding-top:30px;">
+  <a class="journal-entry" href="#">
+    <div class="piece-frame" data-label="Editorial"></div>
+    <span class="eyebrow">Editorial</span>
+    <h3>O jeans que atravessa gerações</h3>
+    <p>Um olhar sobre como o denim brasileiro se reinventa sem perder a essência.</p>
+  </a>
+  <a class="journal-entry" href="#">
+    <div class="piece-frame" data-label="Observações"></div>
+    <span class="eyebrow">Observações</span>
+    <h3>O que vi nas lojas este mês</h3>
+    <p>Notas de campo sobre o que está — e o que não está — funcionando no varejo de moda.</p>
+  </a>
+  <a class="journal-entry" href="#">
+    <div class="piece-frame" data-label="Tecidos"></div>
+    <span class="eyebrow">Tecidos</span>
+    <h3>Algodão, linho, denim e malha: um guia</h3>
+    <p>Como reconhecer qualidade de tecido antes de decidir pela compra.</p>
+  </a>
+  <a class="journal-entry" href="#">
+    <div class="piece-frame" data-label="Modelagens"></div>
+    <span class="eyebrow">Modelagens</span>
+    <h3>Wide leg, reta, oversized ou slim?</h3>
+    <p>Um guia rápido para escolher o corte certo para cada tipo de corpo e ocasião.</p>
+  </a>
+  <a class="journal-entry" href="#">
+    <div class="piece-frame" data-label="Guarda-roupa Brasileiro"></div>
+    <span class="eyebrow">Guarda-roupa Brasileiro</span>
+    <h3>Como comprar melhor</h3>
+    <p>Critérios simples para investir em menos peças, escolhidas com mais cuidado.</p>
+  </a>
+  <a class="journal-entry" href="#">
+    <div class="piece-frame" data-label="Guarda-roupa Brasileiro"></div>
+    <span class="eyebrow">Guarda-roupa Brasileiro</span>
+    <h3>Como combinar sem errar</h3>
+    <p>Uma lógica simples para montar looks com as peças que já estão no seu armário.</p>
+  </a>
+</div>
+</section>
+<section class="page-panel" id="panel-sobre" data-page="sobre">
+<section class="page-hero">
+  <span class="eyebrow">Sobre</span>
+  <h1>Não um currículo. Uma história.</h1>
+  <p class="lede">Minha relação com a moda, minha pesquisa e o propósito por trás deste showroom.</p>
+</section>
+
+<div class="about-grid" style="padding-top:80px;">
+  <div class="about-portrait" data-label="Retrato"></div>
+  <div>
+    <h2 style="font-family:var(--serif); font-weight:500; font-size:clamp(24px,3vw,32px); margin-bottom:20px;">Minha relação com a moda</h2>
+    <p style="color:var(--grafite-suave); margin-bottom:18px;">Quase duas décadas entre operação comercial e moda me ensinaram a olhar para roupa como algo que precisa fazer sentido — não só na prateleira, mas na vida de quem veste.</p>
+    <p style="color:var(--grafite-suave); margin-bottom:18px;">Este showroom nasceu dessa pesquisa: entender por que certas peças permanecem no guarda-roupa por anos, enquanto outras somem depois de uma lavagem.</p>
+    <p style="color:var(--grafite-suave);">Meu propósito é simples — ajudar quem compra a enxergar por que cada peça faz sentido, antes de decidir se ela faz sentido para a própria vida.</p>
+  </div>
+</div>
+
+<div class="section-head">
+  <div>
+    <span class="eyebrow">O fluxo do showroom</span>
+    <h2>Como tudo se conecta</h2>
+  </div>
+</div>
+
+<div class="fluxo">
+  <div class="fluxo-step">Início</div>
+  <div class="fluxo-arrow">↓</div>
+  <div class="fluxo-step">Manifesto</div>
+  <div class="fluxo-arrow">↓</div>
+  <div class="fluxo-step">Coleções</div>
+  <div class="fluxo-arrow">↓</div>
+  <div class="fluxo-step">Produto</div>
+  <div class="fluxo-arrow">↓</div>
+  <div class="fluxo-step">Curadoria</div>
+  <div class="fluxo-arrow">↓</div>
+  <div class="fluxo-step">Marca</div>
+  <div class="fluxo-arrow">↓</div>
+  <div class="fluxo-step">Contato</div>
+</div>
+
+<section class="quote">
+  <div class="quote-inner">
+    <p>"Eu não encontrei apenas roupas. Eu encontrei alguém que fez uma seleção cuidadosa e me ajudou a entender por que essas peças fazem sentido para a vida que eu levo."</p>
+    <div class="quote-attr">A experiência que queremos criar</div>
+  </div>
+</section>
+</section>
+<section class="page-panel" id="panel-contato" data-page="contato">
+<div class="contato-grid">
+  <div class="contato-info">
+    <span class="eyebrow" style="display:block; margin-bottom:16px;">Contato</span>
+    <h2>Vamos conversar</h2>
+    <p>Quero conhecer sua marca. Quero conversar sobre curadoria. Quero conversar sobre representação. Quero falar sobre o showroom.</p>
+    <ul class="contato-motivos">
+      <li>Apresentar uma marca para a curadoria</li>
+      <li>Conversar sobre representação comercial</li>
+      <li>Tirar dúvidas sobre uma peça ou coleção</li>
+      <li>Falar sobre parcerias e imprensa</li>
+    </ul>
+  </div>
+  <form class="contato-form" onsubmit="return false;">
+    <label for="nome">Nome</label>
+    <input id="nome" type="text" placeholder="Seu nome">
+
+    <label for="email">E-mail</label>
+    <input id="email" type="email" placeholder="seu@email.com">
+
+    <label for="motivo">Motivo do contato</label>
+    <select id="motivo">
+      <option>Apresentar uma marca</option>
+      <option>Representação comercial</option>
+      <option>Dúvida sobre peça ou coleção</option>
+      <option>Parcerias e imprensa</option>
+      <option>Outro</option>
+    </select>
+
+    <label for="mensagem">Mensagem</label>
+    <textarea id="mensagem" placeholder="Conte um pouco mais"></textarea>
+
+    <button type="submit">Enviar mensagem</button>
+  </form>
+</div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <p class="footer-signature">Fabiana Martins — Moda &amp; Negócios<br>Curadoria de Moda Brasileira</p>
+      <p>Curadoria de moda brasileira para quem acredita que conforto, qualidade e autenticidade caminham juntos.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegar</h4>
+      <a href="#colecoes">Coleções</a>
+      <a href="#metodo">Método</a>
+      <a href="#caderno">Caderno</a>
+      <a href="#marca">Marcas</a>
+    </div>
+    <div class="footer-col">
+      <h4>Institucional</h4>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="footer-col">
+      <h4>Siga</h4>
+      <a href="#">Instagram</a>
+      <a href="#">Pinterest</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Fabiana Martins — Moda &amp; Negócios</span>
+    <span>Santa Catarina — Brasil</span>
+  </div>
+</footer>
+
+<script>
+// Menu mobile — abre e fecha o menu principal
+document.addEventListener('DOMContentLoaded', function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.main-nav');
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener('click', function () {
+    var isOpen = nav.classList.toggle('open');
+    toggle.textContent = isOpen ? '✕' : '☰';
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // fecha o menu ao clicar em um link
+  nav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      nav.classList.remove('open');
+      toggle.textContent = '☰';
+    });
+  });
+});
+
+
+// Roteamento simples por hash — mostra apenas o painel ativo
+(function () {
+  var panels = document.querySelectorAll('.page-panel');
+  var navLinks = document.querySelectorAll('[data-nav]');
+
+  function showPage(id) {
+    if (!document.getElementById('panel-' + id)) id = 'inicio';
+    panels.forEach(function (p) {
+      p.style.display = (p.id === 'panel-' + id) ? '' : 'none';
+    });
+    navLinks.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('data-nav') === id);
+    });
+    window.scrollTo(0, 0);
+  }
+
+  function currentId() {
+    return (window.location.hash || '#inicio').replace('#', '');
+  }
+
+  window.addEventListener('hashchange', function () {
+    showPage(currentId());
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    showPage(currentId());
+  });
+})();
+
+</script>
+
+</body>
+</html>
